@@ -1,4 +1,4 @@
-{
+var Not6ft = {
 "type": "FeatureCollection",
 "name": "GOGATrails_NOT6ftWide",
 "features": [
