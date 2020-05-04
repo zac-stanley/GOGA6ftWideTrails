@@ -1,4 +1,4 @@
-var Not6ft = {
+var NotSixFt = {
 "type": "FeatureCollection",
 "name": "GOGATrails_NOT6ftWide",
 "features": [
