@@ -211,25 +211,50 @@
 	var ggnra = L.geoJson(ggnraBnd, {
 		style: function (feature) {
 			return {
-				// Let's experiment with these colors shortly
-				// color: '#222222', // Gray
-				color: '#333333', // White
-				// Make line weight larger than the county outline
-				weight: 2,
-				fillOpacity: 0.1,
-				fillColor: '#CCCCCC',
-				// This property allows us control interactivty of layer
-				interactive: true
+				stroke: true,
+				fillColor: 	'#b4e49b',
+				color: '#3B6326',
+				weight: 1.1,
+				fillOpacity: .5
 			}
 		}
 	});
 
-	// zoom to fit screen
+	// add paprk boundary and zoom to fit screen
 	var zoomGgnra = ggnra.getBounds()
 
 	map.fitBounds(zoomGgnra, {
 		zoom: 10.2
 	})
 	ggnra.addTo(map)
+
+	// add six foot wide trails and style them
+	var sixFtTrails = L.geoJson (sixFt, {	
+		pointToLayer: function(feature, latlngs){
+			return feature
+		},	
+	style: function(feature){
+		return {
+			color:'#00B333',
+			weight: 1.5
+		}
+	}
+		
+	}).addTo(map);
+
+	// add trails that aren't six feet wide
+	var notSixFtTrails = L.geoJson (notSixFt, {	
+		pointToLayer: function(feature, latlngs){
+			return feature
+		},	
+	style: function(feature){
+		return {
+			color:'#8C8C8C',
+			weight: 1
+		}
+	}
+		
+	}).addTo(map);
+
 
 </script>
