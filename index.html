@@ -197,6 +197,7 @@
 			center: [37.7161, -122.4680],
 			zoomSnap: .11,
 			zoom:10.2
+			
 		}
 
 		// map 
@@ -256,10 +257,12 @@
 				weight: 1.5
 			});
 		});
-	}
-
-			layer.bindToolTip(`<h4>Trail: ${feature.properties.TRLNAME}<br> Trail Use: ${feature.properties.TRLUSE}<br>Safety: ${feature.properties['Trail Safe']}`)
-
+		// create 6' trail tool tip text
+		var popup = `<h4>Trail: ${feature.properties.TRLNAME}<br> Trail Use: ${feature.properties.TRLUSE}<br>Safety: ${feature.properties['Trail Safe']}`
+		
+	
+	layer.bindPopup(popup)
+		}
 	}).addTo(map);
 
 	// add trails that aren't six feet wide
