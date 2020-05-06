@@ -196,7 +196,7 @@
 		var options = {
 			center: [37.7161, -122.4680],
 			zoomSnap: .11,
-		zoom:10.2
+			zoom:10.2
 		}
 
 		// map 
@@ -220,7 +220,7 @@
 		}
 	});
 
-	// add paprk boundary and zoom to fit screen
+	// add park boundary and zoom to fit screen
 	var zoomGgnra = ggnra.getBounds()
 
 	map.fitBounds(zoomGgnra, {
@@ -238,8 +238,28 @@
 			color:'#00B333',
 			weight: 1.5
 		}
+	},
+	onEachFeature: function (feature, layer) {
+	//	console.log(feature)
+		// on mouseover change color to darker shade of orange
+		layer.on('mouseover', function () {
+			
+			layer.setStyle({
+				color: '#ffa500',
+				weight: 3
+			});
+		});
+		// return to original fill color when not hovering with mouse
+		layer.on('mouseout', function () {
+			layer.setStyle({
+				color: '#00B333',
+				weight: 1.5
+			});
+		});
 	}
-		
+
+			layer.bindToolTip(`<h4>Trail: ${feature.properties.TRLNAME}<br> Trail Use: ${feature.properties.TRLUSE}<br>Safety: ${feature.properties['Trail Safe']}`)
+
 	}).addTo(map);
 
 	// add trails that aren't six feet wide
@@ -253,7 +273,7 @@
 			weight: 1
 		}
 	}
-		
+	
 	}).addTo(map);
 
 
